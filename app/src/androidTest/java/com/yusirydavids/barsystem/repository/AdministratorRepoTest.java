@@ -32,6 +32,5 @@ public class AdministratorRepoTest extends AndroidTestCase {
         System.out.println("Blah");
         Assert.assertEquals("Shane", admin.getName());
 
-
     }
 }

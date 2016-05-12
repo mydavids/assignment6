@@ -5,12 +5,47 @@ import java.io.Serializable;
 /**
  * Created by Yusiry Davids on 4/17/2016.
  */
-public class Waiter implements Serializable {
+public class Staff implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private String name;
     private String surname;
     private String idNumber;
+    private String password;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
+    private String accessLevel;
 
     public String getId() {
         return id;
@@ -28,15 +63,17 @@ public class Waiter implements Serializable {
         return idNumber;
     }
 
-    public Waiter(){
+    public Staff(){
 
     }
 
-    private Waiter(Builder builder){
+    private Staff(Builder builder){
         this.id = builder.id;
         this.idNumber = builder.idNumber;
         this.name = builder.name;
         this.surname = builder.surname;
+        this.password = builder.password;
+        this.accessLevel = builder.accessLevel;
     }
 
     public static class Builder{
@@ -44,6 +81,8 @@ public class Waiter implements Serializable {
         private String idNumber;
         private String name;
         private String surname;
+        private String password;
+        private String accessLevel;
 
         public Builder id(String val){
             this.id = val;
@@ -65,16 +104,28 @@ public class Waiter implements Serializable {
             return this;
         }
 
-        public Builder copy(Waiter val){
+        public Builder password(String val){
+            this.password = val;
+            return this;
+        }
+
+        public Builder accessLevel(String val){
+            this.accessLevel = val;
+            return this;
+        }
+
+        public Builder copy(Staff val){
             this.id = val.id;
             this.idNumber = val.idNumber;
             this.name = val.name;
             this.surname = val.surname;
+            this.password = val.password;
+            this.accessLevel = val.accessLevel;
             return this;
         }
 
-        public Waiter build(){
-            return new Waiter(this);
+        public Staff build(){
+            return new Staff(this);
         }
     }
 

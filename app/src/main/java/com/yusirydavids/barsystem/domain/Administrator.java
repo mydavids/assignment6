@@ -3,17 +3,17 @@ package com.yusirydavids.barsystem.domain;
 /**
  * Created by Yusiry Davids on 4/17/2016.
  */
-public class Adminstrator {
+public class Administrator {
 
     private String name;
     private String surname;
     private String password;
     private String idNumber;
 
-    public Adminstrator() {
+    public Administrator() {
     }
 
-    public Adminstrator(String name, String surname, String password, String idNumber) {
+    public Administrator(String name, String surname, String password, String idNumber) {
         this.name = name;
         this.surname = surname;
         this.password = password;

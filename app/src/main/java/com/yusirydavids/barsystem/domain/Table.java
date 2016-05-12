@@ -13,6 +13,22 @@ public class Table implements Serializable {
     private int seating;
     private String location;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public void setSeating(int seating) {
+        this.seating = seating;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getId() {
         return id;
     }

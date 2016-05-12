@@ -1,6 +1,6 @@
 package com.yusirydavids.barsystem.factory.impl;
 
-import com.yusirydavids.barsystem.domain.Waiter;
+import com.yusirydavids.barsystem.domain.Staff;
 import com.yusirydavids.barsystem.factory.WaiterFactory;
 
 import java.util.UUID;
@@ -23,13 +23,13 @@ public class WaiterFactoryImpl implements WaiterFactory {
     }
 
     @Override
-    public Waiter createWaiter(String name, String surname, String idNumber) {
-        Waiter waiter = new Waiter.Builder()
+    public Staff createWaiter(String name, String surname, String idNumber) {
+        Staff staff = new Staff.Builder()
                 .id(UUID.randomUUID().toString())
                 .name(name)
                 .surname(surname)
                 .idNumber(idNumber)
                 .build();
-        return waiter;
+        return staff;
     }
 }

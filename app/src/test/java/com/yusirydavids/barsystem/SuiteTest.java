@@ -10,7 +10,7 @@ public class SuiteTest {
 
     @Test
     public void SuiteTest() {
-        Class[] testClasses = {ManagerTest.class, OrderTest.class, StockTest.class, TableTest.class, WaiterTest.class};
+        Class[] testClasses = {ManagerTest.class, OrderTest.class, StockTest.class, TableTest.class, StaffTest.class};
         TestSuite suite = new TestSuite(testClasses);
     }
 
