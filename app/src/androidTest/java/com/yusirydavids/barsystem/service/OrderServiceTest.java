@@ -11,6 +11,11 @@ import com.yusirydavids.barsystem.domain.Order;
 import com.yusirydavids.barsystem.domain.Stock;
 import com.yusirydavids.barsystem.service.impl.OrderServiceImpl;
 
+import junit.framework.Assert;
+
+import org.apache.tools.ant.taskdefs.condition.Or;
+import org.testng.annotations.Test;
+
 import java.util.ArrayList;
 
 /**
@@ -55,5 +60,103 @@ public class OrderServiceTest extends AndroidTestCase{
         }
     };
 
+    @Test
+    public void testAddOrder(){
+        ArrayList<Stock> stock = new ArrayList<>();
+        Stock stock1 = new Stock();
+        stock.add(stock1);
+        //Create
+        order = new Order.Builder()
+                .id("1")
+                .date("02/08/2015")
+                .amount(45.55)
+                .stock(stock)
+                .build();
+
+        boolean isAdded = orderService.addOrder(order);
+        Assert.assertEquals(true, isAdded);
+    }
+
+    @Test
+    public void testDeleteOrder(){
+        Order order = new Order.Builder()
+                .id("1")
+                .build();
+
+        boolean isDeleted = orderService.deleteOrder(order);
+        Assert.assertEquals(true, isDeleted);
+    }
+
+    @Test
+    public void testCalculateTotal(){
+        ArrayList<Stock> stock = new ArrayList<>();
+        Stock stock1 = new Stock.Builder().stockID("1")
+                .name("Stock1")
+                .price(50.00)
+                .build();
+
+        Stock stock2 = new Stock.Builder().stockID("2")
+                .name("Stock2")
+                .price(50.00)
+                .build();
+
+
+        stock.add(stock1);
+        stock.add(stock2);
+        //Create
+        order = new Order.Builder()
+                .id("1")
+                .date("02/08/2015")
+                .stock(stock)
+                .build();
+
+        double total = orderService.calculateTotal(order);
+        Assert.assertEquals(100.00, total);
+    }
+
+    @Test
+    public void testGetAllItemsOrdered(){
+
+        ArrayList<Stock> stock = new ArrayList<>();
+        Stock stock1 = new Stock.Builder().stockID("1")
+                .name("Stock1")
+                .price(50.00)
+                .build();
+
+        Stock stock2 = new Stock.Builder().stockID("2")
+                .name("Stock2")
+                .price(50.00)
+                .build();
+
+        stock.add(stock1);
+        stock.add(stock2);
+
+        Order order = new Order.Builder()
+                .id("1")
+                .date("02/08/2015")
+                .stock(stock)
+                .build();
+
+        Assert.assertNotNull(orderService.getAllItemsInOrder(order));
+    }
+
+    @Test
+    public void testAddItemToOrder(){
+        ArrayList<Stock> stock = new ArrayList<>();
+        Stock stock1 = new Stock.Builder().stockID("1")
+                .name("Stock1")
+                .price(50.00)
+                .build();
+
+        Order order = new Order.Builder()
+                .id("1")
+                .date("02/08/2015")
+                .stock(stock)
+                .build();
+
+        boolean isAdded = orderService.addItemToOrder(stock1, order);
+        Assert.assertEquals(true, isAdded);
+
+    }
 
 }
