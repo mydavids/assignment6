@@ -10,6 +10,10 @@ import android.test.AndroidTestCase;
 import com.yusirydavids.barsystem.domain.Staff;
 import com.yusirydavids.barsystem.service.impl.LoginServiceImpl;
 
+import junit.framework.Assert;
+
+import org.testng.annotations.Test;
+
 /**
  * Created by Yusiry on 5/12/2016.
  */
@@ -50,4 +54,19 @@ public class LoginServiceTest extends AndroidTestCase {
             isBound = false;
         }
     };
+
+    @Test
+    public void testUserAuthentication(){
+        Staff staff = new Staff.Builder()
+                .id("1234567890")
+                .name("Alex")
+                .surname("Johnson")
+                .password("123ert")
+                .accessLevel("1")
+                .build();
+
+        boolean isValid = loginService.isAUser(staff.getIdNumber(), staff.getPassword());
+        Assert.assertEquals(true, isValid);
+    }
+
 }
